@@ -1,8 +1,10 @@
 import Header from './components/Header'
 import NewTask from './components/NewTask'
-import './global.css'
 import styles from './App.module.css'
 import TaskCount from './components/TaskCount'
+import Tasks from './components/Tasks'
+
+import './global.css'
 
 export function App() {
   return (
@@ -12,6 +14,7 @@ export function App() {
         <div className={styles.content}>
           <NewTask />
           <TaskCount />
+          <Tasks />
         </div>
       </div>
     </div>
