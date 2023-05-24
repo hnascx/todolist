@@ -4,7 +4,7 @@ import addTaskLogo from '../assets/addtask-img.svg'
 /* Mudar a estrutura e utilizar section com input e button invés da estrutura abaixo? */
 export function NewTask() {
   return (
-    <form className={styles.newtask}>
+    <form className={styles.newTask}>
     <textarea
       placeholder='Adicione uma nova tarefa'
     />

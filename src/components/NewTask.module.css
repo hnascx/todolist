@@ -1,9 +1,9 @@
-.newtask {
+.newTask {
   display: flex;
   justify-content: center;
 }
 
-.newtask textarea {
+.newTask textarea {
   width: 39.875rem;
   height: 3.375rem;
   border: 0;
@@ -14,7 +14,7 @@
   color: var(--gray-100);
 }
 
-.newtask button {
+.newTask button {
   width: 5.625rem;
   height: 3.375rem;
   border: 0;
@@ -26,4 +26,9 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+  transition: background-color 0.1s;
+}
+
+.newTask button:hover {
+  background-color: var(--blue);
 }
