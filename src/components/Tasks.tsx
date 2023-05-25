@@ -13,13 +13,13 @@ export function Tasks() {
         </div>
       </div>
       </div> */}
-      <div className={styles.tasksPopulated}>
-        <div className={styles.containerInput}>
-          <input type="checkbox" name="" id="" />
-        </div>
-        <div className={styles.containerLabel}>
-          <label>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil temporibus ipsam perferendis aliquam voluptate ducimus!</label>
-        </div>
+      <div className={styles.container}>
+        <input type="checkbox" name="" id=""/>
+        <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum eaque voluptates, pariatur explicabo maxime veritatis dolore ipsam repellat ex error natus.</label>
+      </div>
+      <div className={styles.container}>
+        <input type="checkbox" name="" id=""/>
+        <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum eaque voluptates, pariatur explicabo maxime veritatis dolore ipsam repellat ex error natus.</label>
       </div>
     </section>
   )

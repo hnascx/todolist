@@ -24,7 +24,7 @@
 
 .createdTasks div, .concludedTasks div {
   background-color: var(--gray-400);
-  padding: 2px 8px;
+  padding: 0 .5rem;
   border-radius: 40%;
   color: var(--gray-200);
   font-size: 0.75rem;
@@ -32,5 +32,5 @@
   width: 25px;
   height: 19px;
   line-height: 17px;
-  font-weight: 400;
+  font-weight: 700;
 }
