@@ -28,45 +28,56 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
   height: auto;
   border-radius: 8px;
   border: 1px solid var(--gray-400);
   background-color: var(--gray-500);
   gap: 1rem;
+  padding: 1rem;
 }
 
 .container label {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 1rem 1rem 1rem 0;
-  width: 90%;
+  justify-content: flex-start;
+  width: 100%;
+  user-select: none;
+  line-height: 140%;
+  color: var(--gray-100);
+  font-size: 0.875rem;
 }
 
 .container input[type="checkbox"] {
   appearance: none;
-  width: 1.1rem;
-  height: 1.1rem;
+  width: 1.2rem;
+  height: 1.2rem;
   border: 2px solid var(--blue);
   border-radius: 50%;
   outline: none;
   box-shadow: none;
+  transition: 0.1s;
+}
+
+.container input[type="checkbox"]:hover {
+  background-color: var(--blue-dark);
 }
 
 .container input[type="checkbox"]:checked {
   border-color: var(--purple-dark);
   background-color: var(--purple-dark);
   outline: none;
+  transition: 0.1s;
 }
 
+.container input[type="checkbox"]:checked:hover {
+  background-color: var(--purple);
+}
 
 .container input[type="checkbox"]:checked::before {
   content: "✔";
   border-radius: 50%;
   color: var(--gray-100);
-
   font-size: 0.9rem;
   top: -0.20rem;
   left: .07rem;
@@ -77,4 +88,23 @@
 
 .container input[type="checkbox"]:checked ~ label {
   text-decoration: line-through;
+  color: var(--gray-300);
+}
+
+.container:has(input[type="checkbox"]:checked) {
+  border: 1px solid var(--gray-500);
+}
+
+.trashIcon {
+  transition: 0.1s;
+  line-height: 0;
+  padding: 0.25rem;
+  background: transparent;
+}
+
+.trashIcon:hover {
+  border-radius: 0.25rem;
+  background-color: var(--gray-400);
+  color: var(--danger);
+  line-height: 0;
 }

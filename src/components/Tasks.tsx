@@ -1,5 +1,8 @@
+import { Trash } from 'phosphor-react'
+
 import styles from './Tasks.module.css'
 import task from '../assets/task-logo.svg'
+
 
 export function Tasks() {
   return (
@@ -15,11 +18,17 @@ export function Tasks() {
       </div> */}
       <div className={styles.container}>
         <input type="checkbox" name="" id=""/>
-        <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum eaque voluptates, pariatur explicabo maxime veritatis dolore ipsam repellat ex error natus.</label>
+        <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos non atque pariatur molestias quos suscipit, animi totam!</label>
+        <div className={styles.trashIcon}>
+          <Trash size={18} />
+        </div>
       </div>
       <div className={styles.container}>
         <input type="checkbox" name="" id=""/>
-        <label>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum eaque voluptates, pariatur explicabo maxime veritatis dolore ipsam repellat ex error natus.</label>
+        <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos non atque pariatur molestias quos suscipit, animi totam!</label>
+        <div className={styles.trashIcon}>
+          <Trash size={18} />
+        </div>
       </div>
     </section>
   )
