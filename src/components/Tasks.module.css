@@ -53,7 +53,7 @@
   width: 1.2rem;
   height: 1.2rem;
   border: 2px solid var(--blue);
-  border-radius: 50%;
+  border-radius: 100%;
   outline: none;
   box-shadow: none;
   transition: 0.1s;
@@ -72,6 +72,7 @@
 
 .container input[type="checkbox"]:checked:hover {
   background-color: var(--purple);
+  border-color: var(--purple);
 }
 
 .container input[type="checkbox"]:checked::before {

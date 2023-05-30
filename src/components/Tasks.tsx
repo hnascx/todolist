@@ -3,7 +3,6 @@ import { Trash } from 'phosphor-react'
 import styles from './Tasks.module.css'
 import task from '../assets/task-logo.svg'
 
-
 export function Tasks() {
   return (
     <section className={styles.tasks}>

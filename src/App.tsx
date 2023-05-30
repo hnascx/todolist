@@ -6,6 +6,21 @@ import Tasks from './components/Tasks'
 
 import './global.css'
 
+const tasks = [
+  {
+    id: 1,
+    content: [
+      { type: 'task', content: 'Lorem ipsum dolor.' },
+    ],
+  },
+  {
+    id: 2,
+    content: [
+      { type: 'task', content: 'Lorem ipsum dolor.' },
+    ],
+  },
+]
+
 export function App() {
   return (
     <div>
@@ -14,7 +29,15 @@ export function App() {
         <div className={styles.content}>
           <NewTask />
           <TaskCount />
-          <Tasks />
+          <main>
+            {tasks.map(task => {
+              return (
+                <Tasks
+                  content={task.content}
+                />
+              )
+            })}
+          </main>
         </div>
       </div>
     </div>
