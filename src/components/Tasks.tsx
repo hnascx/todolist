@@ -1,9 +1,33 @@
 import { Trash } from 'phosphor-react'
+import { useState, FormEvent } from 'react'
 
 import styles from './Tasks.module.css'
 import task from '../assets/task-logo.svg'
 
-export function Tasks() {
+interface Task {
+  content: string;
+}
+
+export interface TaskType {
+  id: number;
+  content: Task;
+}
+
+interface TaskProps {
+  task: TaskType;
+}
+
+export function Tasks({ task }: TaskProps) {
+  const [newTask, setNewTask] = useState([''])
+  const [newTaskText, setNewTaskText] = useState('')
+
+  function handleCreateNewTask(event: FormEvent) {
+    event.preventDefault()
+
+    setNewTask([ ...newTask, newTaskText ])
+    setNewTaskText('')
+  }
+
   return (
     <section className={styles.tasks}>
       {/* <div className={styles.tasksEmpty}>

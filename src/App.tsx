@@ -9,15 +9,11 @@ import './global.css'
 const tasks = [
   {
     id: 1,
-    content: [
-      { type: 'task', content: 'Lorem ipsum dolor.' },
-    ],
+    content: 'Lorem ipsum dolor.'
   },
   {
     id: 2,
-    content: [
-      { type: 'task', content: 'Lorem ipsum dolor.' },
-    ],
+    content: 'Lorem ipsum dolor.'
   },
 ]
 
@@ -33,6 +29,7 @@ export function App() {
             {tasks.map(task => {
               return (
                 <Tasks
+                  key={task.id}
                   content={task.content}
                 />
               )
