@@ -4,20 +4,11 @@ import { useState, FormEvent } from 'react'
 import styles from './Tasks.module.css'
 import task from '../assets/task-logo.svg'
 
-interface Task {
+type Tasks = {
   content: string;
 }
 
-export interface TaskType {
-  id: number;
-  content: Task;
-}
-
-interface TaskProps {
-  task: TaskType;
-}
-
-export function Tasks({ task }: TaskProps) {
+export function Tasks({ content }: Tasks){
   const [newTask, setNewTask] = useState([''])
   const [newTaskText, setNewTaskText] = useState('')
 
@@ -41,14 +32,7 @@ export function Tasks({ task }: TaskProps) {
       </div> */}
       <div className={styles.container}>
         <input type="checkbox" name="" id=""/>
-        <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos non atque pariatur molestias quos suscipit, animi totam!</label>
-        <div className={styles.trashIcon}>
-          <Trash size={18} />
-        </div>
-      </div>
-      <div className={styles.container}>
-        <input type="checkbox" name="" id=""/>
-        <label>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos non atque pariatur molestias quos suscipit, animi totam!</label>
+        <label>{content}</label>
         <div className={styles.trashIcon}>
           <Trash size={18} />
         </div>

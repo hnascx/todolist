@@ -29,7 +29,6 @@ export function App() {
             {tasks.map(task => {
               return (
                 <Tasks
-                  key={task.id}
                   content={task.content}
                 />
               )
