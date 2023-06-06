@@ -4,21 +4,16 @@ import { useState, FormEvent } from 'react'
 import styles from './Tasks.module.css'
 import task from '../assets/task-logo.svg'
 
-type Tasks = {
+export interface TasksType {
+  id: number;
   content: string;
 }
 
-export function Tasks({ content }: Tasks){
-  const [newTask, setNewTask] = useState([''])
-  const [newTaskText, setNewTaskText] = useState('')
+export interface TasksProps {
+  tasks: TasksType;
+}
 
-  function handleCreateNewTask(event: FormEvent) {
-    event.preventDefault()
-
-    setNewTask([ ...newTask, newTaskText ])
-    setNewTaskText('')
-  }
-
+export function Tasks({ content }: TasksType){
   return (
     <section className={styles.tasks}>
       {/* <div className={styles.tasksEmpty}>

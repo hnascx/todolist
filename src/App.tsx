@@ -3,17 +3,18 @@ import NewTask from './components/NewTask'
 import styles from './App.module.css'
 import TaskCount from './components/TaskCount'
 import Tasks from './components/Tasks'
+import { TasksType } from './components/Tasks'
 
 import './global.css'
 
-const tasks = [
+export const tasks: TasksType[] = [
   {
     id: 1,
     content: 'Lorem ipsum dolor.'
   },
   {
     id: 2,
-    content: 'Lorem ipsum dolor.'
+    content: 'Lorem ipsum dolor sit amet.'
   },
 ]
 
@@ -29,6 +30,7 @@ export function App() {
             {tasks.map(task => {
               return (
                 <Tasks
+                  id={task.id}
                   content={task.content}
                 />
               )
