@@ -1,39 +1,50 @@
-import { useState, KeyboardEvent } from 'react'
+import { useState, FormEvent, ChangeEvent, InvalidEvent } from 'react'
 
 import addTaskLogo from '../assets/addtask-img.svg'
 
 import styles from './NewTask.module.css'
 
 type Props = {
-  onEnter: (taskName: string) => void
+  onClick: (taskName: string) => void
 }
 
-export function NewTask({ onEnter }: Props) {
-  const [inputText, setInputText] = useState('')
+export function NewTask({ onClick }: Props) {
+  const [inputText, setInputText] = useState('')  
 
-  function handleKeyUp(e: KeyboardEvent) {
-    if(e.code === 'Enter' && inputText !== '') {
-      onEnter(inputText)
-    }
+  function handleCreateNewTask(event: FormEvent) {
+    event.preventDefault()
+
+    onClick(inputText)
+    setInputText('')
+  }
+
+  function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('')
+    // O que o método setCustomValidity faz?
+    setInputText(event.target.value)
+  }
+
+  function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('Este campo é obrigatório.')
   }
 
   return (
     <div>
-      <div className={styles.newTask}>
+      <form onSubmit={handleCreateNewTask} className={styles.newTask}>
       <input
-        type='text'
         placeholder='Adicione uma nova tarefa'
         value={inputText}
-        onChange={e => setInputText(e.target.value)}
-        onKeyUp={handleKeyUp}
+        onChange={handleNewTaskChange}
+        onInvalid={handleNewTaskInvalid}
+        required
       />
       <footer>
-        <button>
+        <button type='submit'>
           Criar
           <img src={addTaskLogo} alt='Adicionar tarefa' />
         </button>
       </footer>
-      </div>
+      </form>
     </div>
   )
 }

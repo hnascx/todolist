@@ -41,7 +41,7 @@ export function App() {
         <div className={styles.content}>
           {/* NewTask area */}
 
-          <NewTask onEnter={handleAddTask} />
+          <NewTask onClick={handleAddTask} />
 
           {/* TaskCount area */}
 
