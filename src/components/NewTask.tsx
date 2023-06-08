@@ -1,35 +1,39 @@
-import { FormEvent, useState, ChangeEvent, InvalidEvent } from 'react'
-import styles from './NewTask.module.css'
+import { useState, KeyboardEvent } from 'react'
+
 import addTaskLogo from '../assets/addtask-img.svg'
 
-/* Mudar a estrutura e utilizar section com input e button invés da estrutura abaixo? */
-export function NewTask() {
-  const [content, setContent] = useState([
-    '123'
-  ])
+import styles from './NewTask.module.css'
 
-  const [newContentText, setNewContentText] = useState('')
-  
-  function handleCreateNewTask(event: FormEvent) {
-    event.preventDefault()
+type Props = {
+  onEnter: (taskName: string) => void
+}
 
-    setContent([...content, newContentText])
-    setNewContentText('')
+export function NewTask({ onEnter }: Props) {
+  const [inputText, setInputText] = useState('')
+
+  function handleKeyUp(e: KeyboardEvent) {
+    if(e.code === 'Enter' && inputText !== '') {
+      onEnter(inputText)
+    }
   }
 
   return (
-    <form onSubmit={handleCreateNewTask} className={styles.newTask}>
-    <textarea
-      placeholder='Adicione uma nova tarefa'
-    />
-    <footer>
-      <button>
-        Criar
-        <img src={addTaskLogo} alt='Adicionar tarefa' />
-      </button>
-    </footer>
-  </form>
+    <div>
+      <div className={styles.newTask}>
+      <input
+        type='text'
+        placeholder='Adicione uma nova tarefa'
+        value={inputText}
+        onChange={e => setInputText(e.target.value)}
+        onKeyUp={handleKeyUp}
+      />
+      <footer>
+        <button>
+          Criar
+          <img src={addTaskLogo} alt='Adicionar tarefa' />
+        </button>
+      </footer>
+      </div>
+    </div>
   )
 }
-
-export default NewTask

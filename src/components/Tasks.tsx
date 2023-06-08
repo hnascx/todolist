@@ -1,19 +1,33 @@
 import { Trash } from 'phosphor-react'
-import { useState, FormEvent } from 'react'
+import { useState } from 'react'
+
+import { Item } from '../types/Item'
 
 import styles from './Tasks.module.css'
 import task from '../assets/task-logo.svg'
 
-export interface TasksType {
-  id: number;
-  content: string;
+export function TaskCount() {
+  return (
+    <section className={styles.taskCount}>
+      <div className={styles.createdTasks}>
+        Tarefas criadas
+        <div>0</div>
+      </div>
+      <div className={styles.concludedTasks}>
+        Concluídas
+        <div>0</div>
+      </div>
+    </section>
+  )
 }
 
-export interface TasksProps {
-  tasks: TasksType;
+type Props = {
+  item: Item
 }
 
-export function Tasks({ content }: TasksType){
+export function Tasks({ item }: Props){
+  const [isChecked, setIsChecked] = useState(item.done)
+
   return (
     <section className={styles.tasks}>
       {/* <div className={styles.tasksEmpty}>
@@ -26,8 +40,13 @@ export function Tasks({ content }: TasksType){
       </div>
       </div> */}
       <div className={styles.container}>
-        <input type="checkbox" name="" id=""/>
-        <label>{content}</label>
+        <input 
+          type="checkbox"
+          checked={isChecked}
+          onChange={e => setIsChecked(e.target.checked)}
+          //O parâmetro 'e' recebe através da variável setIsChecked o novo status de checked após a mudança
+        />
+        <label>{item.name}</label>
         <div className={styles.trashIcon}>
           <Trash size={18} />
         </div>
@@ -35,5 +54,3 @@ export function Tasks({ content }: TasksType){
     </section>
   )
 }
-
-export default Tasks

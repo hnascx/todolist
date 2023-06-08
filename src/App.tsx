@@ -1,40 +1,63 @@
+import { useState } from 'react'
+
 import Header from './components/Header'
-import NewTask from './components/NewTask'
 import styles from './App.module.css'
-import TaskCount from './components/TaskCount'
-import Tasks from './components/Tasks'
-import { TasksType } from './components/Tasks'
+import { NewTask } from './components/NewTask'
+import { TaskCount } from './components/Tasks'
+import { Tasks } from './components/Tasks'
+import { Item } from './types/Item'
 
 import './global.css'
 
-export const tasks: TasksType[] = [
-  {
-    id: 1,
-    content: 'Lorem ipsum dolor.'
-  },
-  {
-    id: 2,
-    content: 'Lorem ipsum dolor sit amet.'
-  },
-]
-
 export function App() {
+  const [list, setList] = useState<Item[]>([
+    {
+      id: 1,
+      name: 'Task 1',
+      done: false,
+    },
+    {
+      id: 2,
+      name: 'Task 2',
+      done: true,
+    },
+  ])
+
+  function handleAddTask(taskName: string) {
+    let newList = [...list];
+    newList.push({
+      id: list.length + 1,
+      name: taskName,
+      done: false,
+    })
+
+    setList(newList)
+  } 
+
   return (
     <div>
       <Header />
       <div className={styles.wrapper}>
         <div className={styles.content}>
-          <NewTask />
+          {/* NewTask area */}
+
+          <NewTask onEnter={handleAddTask} />
+
+          {/* TaskCount area */}
+
           <TaskCount />
           <main>
-            {tasks.map(task => {
-              return (
-                <Tasks
-                  id={task.id}
-                  content={task.content}
-                />
-              )
-            })}
+            
+
+
+            {/* Tasks area */}
+
+            {list.map((item, index) => (
+              <Tasks 
+                key={index}
+                item={item}
+              />
+            ))}
           </main>
         </div>
       </div>
