@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Header from './components/Header'
 import styles from './App.module.css'
 import { NewTask } from './components/NewTask'
-import { TaskCount } from './components/Tasks'
+import { TaskCount } from './components/TaskCount'
 import { Tasks } from './components/Tasks'
 import { Item } from './types/Item'
 
@@ -34,28 +34,37 @@ export function App() {
     setList(newList)
   } 
 
+  function handleDeleteTask(taskToDelete: Item) {
+    const taskWithoutDeletedOne = list.filter(list => {
+      return list !== taskToDelete
+    })
+
+    setList(taskWithoutDeletedOne)
+  }
+
+  function allTasksCount(Tasks: Item[]) {
+    return Tasks.length
+  }
+
+  function allTasksCountValue() {
+    const tasksCount = allTasksCount(list);
+    
+    return tasksCount
+  }
+
   return (
     <div>
       <Header />
       <div className={styles.wrapper}>
         <div className={styles.content}>
-          {/* NewTask area */}
-
           <NewTask onClick={handleAddTask} />
-
-          {/* TaskCount area */}
-
-          <TaskCount />
+          <TaskCount onTasksCount={allTasksCountValue}/>
           <main>
-            
-
-
-            {/* Tasks area */}
-
             {list.map((item, index) => (
               <Tasks 
                 key={index}
                 item={item}
+                onDelete={handleDeleteTask}
               />
             ))}
           </main>

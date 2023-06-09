@@ -1,32 +1,22 @@
 import { Trash } from 'phosphor-react'
+
 import { useState } from 'react'
-
 import { Item } from '../types/Item'
-
-import styles from './Tasks.module.css'
 import task from '../assets/task-logo.svg'
 
-export function TaskCount() {
-  return (
-    <section className={styles.taskCount}>
-      <div className={styles.createdTasks}>
-        Tarefas criadas
-        <div>0</div>
-      </div>
-      <div className={styles.concludedTasks}>
-        Concluídas
-        <div>0</div>
-      </div>
-    </section>
-  )
-}
+import styles from './Tasks.module.css'
 
 type Props = {
-  item: Item
+  item: Item;
+  onDelete: (taskToDelete: Item) => void;
 }
 
-export function Tasks({ item }: Props){
+export function Tasks({ item, onDelete }: Props){
   const [isChecked, setIsChecked] = useState(item.done)
+
+  function handleDeleteTask() {
+    onDelete(item)
+  }
 
   return (
     <section className={styles.tasks}>
@@ -44,12 +34,11 @@ export function Tasks({ item }: Props){
           type="checkbox"
           checked={isChecked}
           onChange={e => setIsChecked(e.target.checked)}
-          //O parâmetro 'e' recebe através da variável setIsChecked o novo status de checked após a mudança
         />
         <label>{item.name}</label>
-        <div className={styles.trashIcon}>
+        <button onClick={handleDeleteTask} className={styles.trashIcon}>
           <Trash size={18} />
-        </div>
+        </button>
       </div>
     </section>
   )
