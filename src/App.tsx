@@ -5,23 +5,13 @@ import styles from './App.module.css'
 import { NewTask } from './components/NewTask'
 import { TaskCount } from './components/TaskCount'
 import { Tasks } from './components/Tasks'
+import { TasksEmpty } from './components/TasksEmpty'
 import { Item } from './types/Item'
 
 import './global.css'
 
 export function App() {
-  const [list, setList] = useState<Item[]>([
-    {
-      id: 1,
-      name: 'Task 1',
-      done: false,
-    },
-    {
-      id: 2,
-      name: 'Task 2',
-      done: true,
-    },
-  ])
+  const [list, setList] = useState<Item[]>([])
 
   function handleAddTask(taskName: string) {
     let newList = [...list];
@@ -52,19 +42,30 @@ export function App() {
     return tasksCount
   }
 
+  function handleCheckboxChange(itemId: number, isChecked: boolean) {
+    const updatedList = list.map(item => {
+      if (item.id === itemId) {
+        return { ...item, done: isChecked };
+      }
+      return item;
+    });
+    setList(updatedList);
+  }
+
   return (
     <div>
       <Header />
       <div className={styles.wrapper}>
         <div className={styles.content}>
           <NewTask onClick={handleAddTask} />
-          <TaskCount onTasksCount={allTasksCountValue}/>
+          <TaskCount onTasksCount={allTasksCountValue} tasks={list} onCheckboxChange={handleCheckboxChange}/>
           <main>
-            {list.map((item, index) => (
+            {list.length === 0 ? <TasksEmpty/> : list.map((item, index) => (
               <Tasks 
                 key={index}
                 item={item}
                 onDelete={handleDeleteTask}
+                onCheckboxChange={handleCheckboxChange}
               />
             ))}
           </main>
