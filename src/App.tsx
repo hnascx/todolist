@@ -6,50 +6,53 @@ import { NewTask } from './components/NewTask'
 import { TaskCount } from './components/TaskCount'
 import { Tasks } from './components/Tasks'
 import { TasksEmpty } from './components/TasksEmpty'
-import { Item } from './types/Item'
+import { Task } from './types/Task'
 
 import './global.css'
 
 export function App() {
-  const [list, setList] = useState<Item[]>([])
+
+  const [task, setTask] = useState<Task[]>([])
 
   function handleAddTask(taskName: string) {
-    let newList = [...list];
-    newList.push({
-      id: list.length + 1,
-      name: taskName,
-      done: false,
+    let newTask = [...task];
+    newTask.push({
+      id: task.length + 1,
+      task: taskName,
+      concluded: false,
     })
 
-    setList(newList)
+    setTask(newTask)
   } 
-
-  function handleDeleteTask(taskToDelete: Item) {
-    const taskWithoutDeletedOne = list.filter(list => {
-      return list !== taskToDelete
+  
+  function handleDeleteTask(taskToDelete: Task) {
+    const taskWithoutDeletedOne = task.filter(task => {
+      return task !== taskToDelete
     })
 
-    setList(taskWithoutDeletedOne)
+    setTask(taskWithoutDeletedOne)
   }
 
-  function allTasksCount(Tasks: Item[]) {
+  function allTasksCount(Tasks: Task[]) {
     return Tasks.length
   }
 
   function allTasksCountValue() {
-    const tasksCount = allTasksCount(list);
+    const tasksCount = allTasksCount(task);
     
     return tasksCount
   }
 
-  function handleCheckboxChange(itemId: number, isChecked: boolean) {
-    const updatedList = list.map(item => {
-      if (item.id === itemId) {
-        return { ...item, done: isChecked };
+  function handleCheckboxChange(taskId: number, isChecked: boolean) {
+    const updatedTaskList = task.map(item => {
+      if (item.id === taskId) {
+        return { ...item, concluded: isChecked };
       }
+
       return item;
     });
-    setList(updatedList);
+    
+    setTask(updatedTaskList);
   }
 
   return (
@@ -58,12 +61,12 @@ export function App() {
       <div className={styles.wrapper}>
         <div className={styles.content}>
           <NewTask onClick={handleAddTask} />
-          <TaskCount onTasksCount={allTasksCountValue} tasks={list} onCheckboxChange={handleCheckboxChange}/>
+          <TaskCount onTasksCount={allTasksCountValue} tasks={task} onCheckboxChange={handleCheckboxChange}/>
           <main>
-            {list.length === 0 ? <TasksEmpty/> : list.map((item, index) => (
+            {task.length === 0 ? <TasksEmpty/> : task.map((task, index) => (
               <Tasks 
                 key={index}
-                item={item}
+                task={task}
                 onDelete={handleDeleteTask}
                 onCheckboxChange={handleCheckboxChange}
               />

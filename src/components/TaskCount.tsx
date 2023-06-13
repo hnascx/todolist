@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import { Item } from '../types/Item'
+import { Task } from '../types/Task'
 
 import styles from './TaskCount.module.css'
 
 type Props = {
   onTasksCount: () => number;
-  tasks: Item[]; 
-  onCheckboxChange: (itemId: number, isChecked: boolean) => void;
+  tasks: Task[]; 
+  onCheckboxChange: (taskId: number, isChecked: boolean) => void;
 }
 
 export function TaskCount({ onTasksCount, tasks }: Props) {
@@ -18,11 +18,12 @@ export function TaskCount({ onTasksCount, tasks }: Props) {
     setTaskCount(count);
 
     const completedCount = tasks.reduce((count, task) => {
-      if (task.done === true) {
+      if (task.concluded === true) {
         return count + 1;
       }
       return count;
     }, 0);
+    
     setCompletedTasksCount(completedCount);
   }, [onTasksCount, tasks]);
 

@@ -9,19 +9,18 @@ type Props = {
 }
 
 export function NewTask({ onClick }: Props) {
-  const [inputText, setInputText] = useState('')  
+  const [newTask, setNewTask] = useState('')  
 
   function handleCreateNewTask(event: FormEvent) {
     event.preventDefault()
 
-    onClick(inputText)
-    setInputText('')
+    onClick(newTask)
+    setNewTask('')
   }
 
   function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
     event.target.setCustomValidity('')
-    // O que o método setCustomValidity faz?
-    setInputText(event.target.value)
+    setNewTask(event.target.value)
   }
 
   function handleNewTaskInvalid(event: InvalidEvent<HTMLInputElement>) {
@@ -33,7 +32,7 @@ export function NewTask({ onClick }: Props) {
       <form onSubmit={handleCreateNewTask} className={styles.newTask}>
       <input
         placeholder='Adicione uma nova tarefa'
-        value={inputText}
+        value={newTask}
         onChange={handleNewTaskChange}
         onInvalid={handleNewTaskInvalid}
         required

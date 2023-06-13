@@ -1,33 +1,32 @@
 import { Trash } from 'phosphor-react'
 
 import { useState, useEffect } from 'react'
-import { Item } from '../types/Item'
+import { Task } from '../types/Task'
 
 import styles from './Tasks.module.css'
 
 type Props = {
-  item: Item;
-  onDelete: (taskToDelete: Item) => void;
-  onCheckboxChange: (itemId: number, isChecked: boolean) => void;
-
+  task: Task;
+  onDelete: (taskToDelete: Task) => void;
+  onCheckboxChange: (taskId: number, isChecked: boolean) => void;
 }
 
-export function Tasks({ item, onDelete, onCheckboxChange }: Props){
-  const [isChecked, setIsChecked] = useState(item.done)
+export function Tasks({ task, onDelete, onCheckboxChange }: Props){
+  const [isChecked, setIsChecked] = useState(task.concluded)
 
   function handleDeleteTask() {
-    onDelete(item)
+    onDelete(task)
   }
 
   function handleCheckboxChange(e: React.ChangeEvent<HTMLInputElement>) {
     const updatedChecked = e.target.checked;
     setIsChecked(updatedChecked);
-    onCheckboxChange(item.id, updatedChecked)
+    onCheckboxChange(task.id, updatedChecked)
   }
 
   useEffect(() => {
-    setIsChecked(item.done);
-  }, [item.done]);
+    setIsChecked(task.concluded);
+  }, [task.concluded]);
 
   return (
     <section className={styles.tasks}>
@@ -37,7 +36,7 @@ export function Tasks({ item, onDelete, onCheckboxChange }: Props){
           checked={isChecked}
           onChange={handleCheckboxChange}
         />
-        <label>{item.name}</label>
+        <label>{task.task}</label>
         <button onClick={handleDeleteTask} className={styles.trashIcon}>
           <Trash size={18} />
         </button>
