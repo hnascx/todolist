@@ -117,17 +117,18 @@
   box-shadow: none;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .container input[type="checkbox"] {
-    height: 1.2rem;
+    width: 1.4rem;
+    height: 1.1rem;
     border: 0.145rem solid var(--blue);
     padding-top: 0.2rem;
     padding-left: 0.04rem;
   }
 
   .container input[type="checkbox"]:checked::before {
-    padding-top: 0.3rem;
-    padding-left: 0.03rem;
+    padding-top: 0.1rem;
+    padding-left: 0.01rem;
   }
 }
 
