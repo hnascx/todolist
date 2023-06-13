@@ -6,6 +6,10 @@
   padding: 4.75rem 0;
 }
 
+.header a {
+  box-shadow: none;
+}
+
 .header img {
   height: 3rem;
 }

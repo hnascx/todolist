@@ -23,21 +23,25 @@
 }
 
 .createdTasks div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--gray-400);
   padding: .1rem .5rem;
   border-radius: 1rem;
   color: var(--gray-200);
   font-size: 0.75rem;
   font-weight: 700;
-  height: 1.25rem;
 }
 
 .concludedTasks div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: var(--gray-400);
   padding: .1rem .5rem;
   border-radius: 1rem;
   color: var(--gray-200);
   font-size: 0.75rem;
   font-weight: 700;
-  height: 1.25rem;
 }

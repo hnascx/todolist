@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
   /* border-top: 1px solid var(--gray-400); */
-  margin: 0 auto 0.75rem;
+  margin: 0rem auto 0.75rem;
 }
 
 .tasks:last-child {
@@ -18,8 +18,8 @@
   align-items: flex-start;
   width: 100%;
   height: auto;
-  border-radius: 8px;
-  border: 1px solid var(--gray-400);
+  border-radius: 0.5rem;
+  border: 0.0625rem solid var(--gray-400);
   background-color: var(--gray-500);
   gap: 1rem;
   padding: 1rem;
@@ -29,21 +29,23 @@
   display: flex;
   justify-content: flex-start;
   width: 100%;
-  user-select: none;
-  line-height: 140%;
   color: var(--gray-100);
   font-size: 0.875rem;
+  word-break: break-word;
 }
 
 .container input[type="checkbox"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   appearance: none;
-  width: 20px;
-  height: 19px;
-  border: 2px solid var(--blue);
-  border-radius: 100%;
-  outline: none;
+  width: 1.3rem;
+  height: 1.2rem;
+  border: 0.125rem solid var(--blue);
+  border-radius: 50%;
   box-shadow: none;
   transition: 0.1s;
+  cursor: pointer;
 }
 
 .container input[type="checkbox"]:hover {
@@ -53,44 +55,51 @@
 .container input[type="checkbox"]:checked {
   border-color: var(--purple-dark);
   background-color: var(--purple-dark);
-  outline: none;
   transition: 0.1s;
 }
 
 .container input[type="checkbox"]:checked:hover {
   background-color: var(--purple);
   border-color: var(--purple);
+  
 }
 
 .container input[type="checkbox"]:checked::before {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  content: "✔";
-  line-height: 17.5px;
-  margin-right: 1px;
+  content: url(../assets/check.svg);
   border-radius: 100%;
   color: var(--gray-100);
   align-items: center;
-  outline: none;
+  position: absolute;
+}
+
+@keyframes lineThrough { 
+  from { text-decoration-color: transparent; }
+  to { text-decoration-color: var(--gray-300)}
+}
+
+.container input[type="checkbox"] ~ label {
+  transition: .9s ease;
 }
 
 .container input[type="checkbox"]:checked ~ label {
   text-decoration: line-through;
+  animation: lineThrough .9s ease;
   color: var(--gray-300);
+  transition: .9s ease;
 }
 
 .container:has(input[type="checkbox"]:checked) {
-  border: 1px solid var(--gray-500);
+  border: 0.06rem solid var(--gray-500);
 }
 
 .trashIcon {
   transition: 0.1s;
-  line-height: 0;
   padding: 0.25rem;
   background: transparent;
   color: var(--gray-300);
   border: none;
+  cursor: pointer;
+  line-height: 0;
 }
 
 .trashIcon:hover {
@@ -98,4 +107,8 @@
   background-color: var(--gray-400);
   color: var(--danger);
   line-height: 0;
+}
+
+.trashIcon:focus {
+  box-shadow: none;
 }

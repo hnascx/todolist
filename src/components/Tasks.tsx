@@ -35,8 +35,8 @@ export function Tasks({ task, onDelete, onCheckboxChange }: Props){
           type="checkbox"
           checked={isChecked}
           onChange={handleCheckboxChange}
-        />
-        <label>{task.task}</label>
+          />
+          <label>{task.task}</label>
         <button onClick={handleDeleteTask} className={styles.trashIcon}>
           <Trash size={18} />
         </button>
