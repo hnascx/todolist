@@ -40,3 +40,20 @@
 .newTask button:hover {
   background-color: var(--blue);
 }
+
+@media (max-width: 280px) {
+  .newTask {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .newTask input {
+    width: 18rem;
+  }
+
+  .newTask button {
+    margin: 0;
+    width: 18rem;
+  }
+}
