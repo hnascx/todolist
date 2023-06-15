@@ -7,9 +7,9 @@ export function TasksEmpty() {
     <div className={styles.tasksEmpty}>
       <img src={task} alt="Task logo" />
       <div>
-        <b>Você ainda não tem tarefas cadastradas</b>
+        <b>We still don't have any task here :(</b>
         <div className={styles.tasksEmptyText}>
-          Crie tarefas e organize seus itens a fazer
+          Input tasks and organize your to dos.
         </div>
       </div>
     </div>
