@@ -7,12 +7,12 @@
 }
 
 .createdTasks {
-  color: var(--blue);
+  color: var(--pink-light);
   font-size: 0.875rem;
 }
 
 .concludedTasks {
-  color: var(--purple);
+  color: var(--pink-dark);
   font-size: 0.875rem;
 }
 
@@ -26,7 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--gray-400);
+  background-color: var(--purple-dark);
   padding: .1rem .5rem;
   border-radius: 1rem;
   color: var(--gray-200);
@@ -38,7 +38,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--gray-400);
+  background-color: var(--purple-dark);
   padding: .1rem .5rem;
   border-radius: 1rem;
   color: var(--gray-200);

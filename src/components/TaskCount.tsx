@@ -30,11 +30,11 @@ export function TaskCount({ onTasksCount, tasks }: Props) {
   return (
     <section className={styles.taskCount}>
       <div className={styles.createdTasks}>
-        Tarefas criadas
+        Created tasks
         <div>{taskCount}</div>
       </div>
       <div className={styles.concludedTasks}>
-        Concluídas
+        Concluded
         <div>{completedTasksCount} de {taskCount}</div>
       </div>
     </section>

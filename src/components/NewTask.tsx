@@ -31,7 +31,7 @@ export function NewTask({ onClick }: Props) {
     <div>
       <form onSubmit={handleCreateNewTask} className={styles.newTask}>
       <input
-        placeholder='Adicione uma nova tarefa'
+        placeholder='Write an new task here'
         value={newTask}
         onChange={handleNewTaskChange}
         onInvalid={handleNewTaskInvalid}
@@ -39,7 +39,7 @@ export function NewTask({ onClick }: Props) {
       />
       <footer>
         <button type='submit'>
-          Criar
+          Add
           <img src={addTaskLogo} alt='Adicionar tarefa' />
         </button>
       </footer>
