@@ -111,25 +111,25 @@
 @media (max-width: 767px) {
   .container input[type="checkbox"] {
     width: 1.35rem;
-    height: 1.1rem;
+    height: 1.15rem;
     border: 0.145rem solid var(--purple);
   }
 
   .container input[type="checkbox"]:checked::before {
-    padding-top: 0.2rem;
-    padding-right: 0.05rem;
+    padding-top: 0.3rem;
+    padding-left: 0.03rem;
   }
 }
 
 @media (max-width: 280px) {
   .container input[type="checkbox"] {
-    width: 1.45rem;
+    width: 1.40rem;
     height: 1rem;
     border: 0.145rem solid var(--blue);
   }
 
   .container input[type="checkbox"]:checked::before {
-    padding-top: 0.2rem;
-    padding-left: 0.03rem;
+    padding-top: 0.3rem;
+    padding-right: 0.03rem;
   }
 }
