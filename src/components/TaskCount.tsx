@@ -6,7 +6,6 @@ import styles from './TaskCount.module.css'
 type Props = {
   onTasksCount: () => number;
   tasks: Task[]; 
-  onCheckboxChange: (taskId: number, isChecked: boolean) => void;
 }
 
 export function TaskCount({ onTasksCount, tasks }: Props) {
